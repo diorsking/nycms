@@ -1,0 +1,46 @@
+*{
+    margin:0;
+    padding:0;
+}
+.container-fluid{
+    /*background-color: green;*/
+    background-color: #06141e;
+
+}
+#myCanvasContainer{
+    /*width:1900px;*/
+    background-color: #06141e;
+    margin:0 auto;
+    z-index: -999;
+    /*background: -webkit-linear-gradient( #5dbaae,lightgreen); !* Safari 5.1 - 6.0 *!*/
+    /*background: -o-linear-gradient( #5dbaae,lightgreen); !* Opera 11.1 - 12.0 *!*/
+    /*background: -moz-linear-gradient( #5dbaae,lightgreen); !* Firefox 3.6 - 15 *!*/
+    /*background: linear-gradient( #5dbaae,lightgreen); !* 标准的语法 *!*/
+
+/*height:1000px;*/
+}
+#search-box{
+    position:absolute;
+    top:300px;
+}
+#search-input{
+    width:100%;
+}
+#search-input-div{
+     width:62%;
+ }
+#footer{
+    background-color: #06141e;
+    color: #aaa;
+    font-size:14px;
+}
+#select-div{
+    width:21%;
+}
+#select{
+    width:100%;
+}
+#search-btn{
+    width:14%;
+}
+

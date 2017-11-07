@@ -1,0 +1,204 @@
+{% load i18n %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        {% block meta %}{% endblock meta %}
+        <link rel="stylesheet" type="text/css" href="{% static "zinnia_twts/theme/css/semantic.css" %}"/>
+        <link rel="stylesheet" type="text/css" href="{% static "zinnia_twts/theme/css/main.css" %}"/>
+        <title>梵净山农业知识数据检索</title>
+        <style>
+            *{
+              margin:0;
+              padding:0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="ui container">
+        <img class="ui vertical image "  src="{% static "zinnia_twts/theme/img/logo.png"%}"  style="width: 40%;" alt=""></div>
+        <!-- 导航图部分开始 -->
+        <div class="ui secondary vertical basic segment search-box" style="background:rgb(11,126,206);">
+            <div class="ui container search-input">
+              <form method="get" action="{% url 'zinnia:entry_search' %}">
+                <input class="ui input segment" type="text" name="pattern" placeholder="{% trans "Keywords..." %}" {% if pattern %}value="{{ pattern }}"{% endif %} />
+                <input class="ui button basic inverted search-button" type="submit" value="搜索">
+              </form>
+        </div>
+        </div>
+        <!-- 导航图部分结束 -->
+      </div>
+      <div class="ui divider"></div>
+      <!-- 4张小图部分开始 -->
+      <div class="ui secondary vertical basic segment ">
+        <div class="ui container">
+          <h2 class="ui header">
+              分类数据
+          </h2>
+          <div class="ui three column grid" style="margin-top:20px;">
+              <div class="column">
+                <img class="ui image padded type-img"  src="{% static "zinnia_twts/theme/img/资讯.png"%}"  style="float: left;width: 50px;height: 50px;margin-right:8px;" alt="">
+                <div class="ui container">
+                  <h3 class="ui header"><a href="/categories/localinfo/">本土资讯</a></h3>
+                  <div class="sub header">梵净山农业科技动态、热点信息</div>
+                </div>
+              </div>
+              <div class="column">
+                <img class="ui image type-img" src="{% static "zinnia_twts/theme/img/国外资讯.png"%}"  style="float: left;width: 50px;height: 50px;margin-right:8px;" alt="">
+                <div class="ui container">
+                  <h3 class="ui header"><a href="/categories/netinfo/">网络资讯</a></h3>
+                  <div class="sub header">国内外官方发布农业科技动态、前沿热点信息</div>
+                </div>
+              </div>
+              <div class="column">
+                <img class="ui image type-img" src="{% static "zinnia_twts/theme/img/文献.png"%}" style="float: left;width: 50px;height: 50px;margin-right:8px;" alt="">
+                <div class="ui container">
+                  <h3 class="ui header"><a href="/categories/charticle/">中文文献</a></h3>
+                  <div class="sub header">农业科技领域中文文章</div>
+                </div>
+              </div>
+          </div>
+          <div class="ui three column grid" style="margin-top:20px;">
+              <div class="column">
+                <img class="ui image type-img" src="{% static "zinnia_twts/theme/img/引用文献.png"%}" style="float: left;width: 50px;height: 50px;margin-right:8px;" alt="">
+                <div class="ui container">
+                  <h3 class="ui header"><a href="/categories/engarticle/">外文文献</a></h3>
+                  <div class="sub header">农业科技领域的英文核心期刊</div>
+                </div>
+              </div>
+              <div class="column">
+                <img class="ui image type-img" src="{% static "zinnia_twts/theme/img/科技成果.png"%}" style="float: left;width: 50px;height: 50px;margin-right:8px;" alt="">
+                <div class="ui container">
+                  <h3 class="ui header"><a href="/categories/techresult/">科技成果</a></h3>
+                  <div class="sub header">自1991年以来农业领域获省部级以上科技奖励等科技成果数据</div>
+                </div>
+              </div>
+              <div class="column">
+                <img class="ui image type-img" src="{% static "zinnia_twts/theme/img/专利.png"%}" style="float: left;width: 50px;height: 50px;margin-right:8px;" alt="">
+                <div class="ui container">
+                  <h3 class="ui header"><a href="/categories/agripro/">农业专利</a></h3>
+                  <div class="sub header">1985年以来国内外的专利数据</div>
+                </div>
+              </div>
+              <div class="column">
+                <img class="ui image type-img" src="{% static "zinnia_twts/theme/img/技术.png"%}" style="float: left;width: 50px;height: 50px;margin-right:8px;" alt="">
+                <div class="ui container">
+                  <h3 class="ui header"><a href="/categories/usefultech/">实用技术</a></h3>
+                  <div class="sub header">技术成熟、市场前景广、省工省时高效益农业技术</div>
+                </div>
+              </div>
+              <div class="column">
+                <img class="ui image type-img" src="{% static "zinnia_twts/theme/img/数据.png"%}" style="float: left;width: 50px;height: 50px;margin-right:8px;" alt="">
+                <div class="ui container">
+                  <h3 class="ui header"><a href="/categories/agridata/">农业数据</a></h3>
+                  <div class="sub header">农业数据百科介绍</div>
+                </div>
+              </div>
+              <div class="column">
+                <img class="ui image type-img" src="{% static "zinnia_twts/theme/img/法律.png"%}" style="float: left;width: 50px;height: 50px;margin-right:8px;" alt="">
+                <div class="ui container">
+                  <h3 class="ui header"><a href="/categories/law/">政策法规</a></h3>
+                  <div class="sub header">强农惠农相关政策法规</div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+        <div class="ui divider"></div>
+        <!-- 4张小图部分开始 -->
+        <div class="ui secondary vertical basic segment ">
+          <div class="ui container">
+            <h2 class="ui header">
+                特色资源
+            </h2>
+            <div class="ui three column grid padded" style="margin-top:20px;">
+                <div class="column">
+                  <img class="ui image sp-type-img" src="{% static "zinnia_twts/theme/img/科学数据.gif"%}" style="float:left;width:50px;height:50px;margin-right:8px;" alt="">
+                  <div class="ui container">
+                    <h3 class="ui header"><a href="/categories/sdata/">科学数据</a></h3>
+                    <div class="sub header">畜牧、区划等农业科学数据资源</div>
+                  </div>
+                </div>
+                <div class="column">
+                  <img class="ui image sp-type-img" src="{% static "zinnia_twts/theme/img/行业报告.gif"%}" style="float:left;width:50px;height:50px;margin-right:8px;" alt="">
+                  <div class="ui container">
+                    <h3 class="ui header"><a href="/categories/hreport/">行业报告</a></h3>
+                    <div class="sub header">权威机构发布的行业或研究报告</div>
+                  </div>
+                </div>
+                <div class="column">
+                  <img class="ui image sp-type-img" src="{% static "zinnia_twts/theme/img/科研项目.gif"%}" style="float:left;width:50px;height:50px;margin-right:8px;" alt="">
+                  <div class="ui container">
+                    <h3 class="ui header"><a href="/categories/sproject/">科研项目</a></h3>
+                    <div class="sub header">国内外权威机构农业项目数据</div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- 4张小图部分结束 -->
+        <!-- 页尾部分开始 -->
+        <div class="ui vertical secondary very padded segment">
+            <div class="ui container">
+              <div class="ui divider"></div>
+                <div class="ui three column grid">
+                    <div class="column">
+                        <div class="ui vertical text menu">
+                            <a class="item" href="http://www.webofknowledge.com" target="_blank">
+                                Web of Knowledge
+                            </a>
+                            <a class="item" href="http://onlinelibrary.wiley.com/" target="_blank">
+                                Wiley Online Library
+                            </a>
+                            <a class="item" href="http://g.wanfangdata.com.cn" target="_blank">
+                                万方数据
+                            </a>
+                            <a class="item" href="http://cnki.caas.cn" target="_blank">
+                                CNKI中国知网镜像 | 包库
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="ui vertical text menu">
+                            <a class="item" href="http://www.springerlink.com" target="_blank">
+                                SpringerLink
+                            </a>
+                            <a class="item" href="http://www.nature.com/" target="_blank">
+                                Nature
+                            </a>
+                            <a class="item" href="http://www.sciencedirect.com/" target="_blank">
+                                Science Direct
+                            </a>
+                            <a class="item" href="http://www.sciencemag.org" target="_blank">
+                                ScienceOnline
+                            </a>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="ui vertical text menu">
+                            <a class="item" href="http://www.zigvine.com/wwwroot2x/#login/" target="_blank">
+                                梵净山农业环境信息监测
+                            </a>
+                            <div class="item" href="http://www.tragri.gov.cn" target="_blank">
+                                铜仁市农业信息网
+                            </div>
+                            <a class="item" href="http://www.fjsfjq.com/index.htm" target="_blank">
+                                梵净山景区网
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- 页尾部分结束 -->
+        <footer class="ui borderless segment">
+          <div class="ui container">
+            Nycms.com &copy;2017. All Rights Reserved.
+          </div>
+        </footer>
+    </body>
+</html>

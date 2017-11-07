@@ -1,0 +1,58 @@
+{% load i18n %}
+<nav>
+  <ul class="ui borderless pagination menu paginator ">
+
+    {% if page.has_previous %}
+    <li class="item page previous">
+      <a href="?page={{ page.previous_page_number }}{{ GET_string }}"
+         title="{% trans "More recent entries" %}">&laquo;</a>
+    </li>
+    {% endif %}
+
+    {% for page_number in begin %}
+    <li class="item page{% ifequal page.number page_number %} current{% endifequal %}">
+      {% ifequal page.number page_number %}
+      {{ page_number }}
+      {% else %}
+      <a href="?page={{ page_number }}{{ GET_string }}"
+         title="{% trans "Entries page" %} {{ page_number }}">{{ page_number }}</a>
+      {% endifequal%}
+    </li>
+    {% endfor %}
+
+    {% if middle %}
+    <li class="item ellipsis">&hellip;</li>
+    {% for page_number in middle %}
+    <li class="item page{% ifequal page.number page_number %} current{% endifequal %}">
+      {% ifequal page.number page_number %}
+      {{ page_number }}
+      {% else %}
+      <a href="?page={{ page_number }}{{ GET_string }}"
+         title="{% trans "Entries page" %} {{ page_number }}">{{ page_number }}</a>
+      {% endifequal%}
+    </li>
+    {% endfor %}
+    {% endif %}
+
+    {% if end %}
+    <li class="item ellipsis">&hellip;</li>
+    {% for page_number in end %}
+    <li class="item page{% ifequal page.number page_number %} current{% endifequal %}">
+      {% ifequal page.number page_number %}
+      {{ page_number }}
+      {% else %}
+      <a href="?page={{ page_number }}{{ GET_string }}"
+         title="{% trans "Entries page" %} {{ page_number }}">{{ page_number }}</a>
+      {% endifequal%}
+    </li>
+    {% endfor %}
+    {% endif %}
+
+    {% if page.has_next %}
+    <li class="item page next">
+      <a href="?page={{ page.next_page_number }}{{ GET_string }}"
+         title="{% trans "More old entries" %}">&raquo;</a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>

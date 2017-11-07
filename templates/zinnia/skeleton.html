@@ -1,0 +1,113 @@
+{% load i18n %}
+{% load staticfiles %}
+<!doctype html>
+<html lang="{{ LANGUAGE_CODE }}">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock title %}{% block title-page %}{% endblock title-page %} 梵净山农业知识数据检索系统</title>
+    <meta name="robots" content="follow, all"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="{% block meta-description %}{% trans "Just another Zinnia weblog." %}{% endblock meta-description %}{% block meta-description-page %}{% endblock meta-description-page %}"/>
+    <meta name="keywords" content="{% block meta-keywords %}django, blog, weblog, zinnia{% endblock meta-keywords %}"/>
+    <meta name="author" content="Fantomas42"/>
+    {% block meta %}{% endblock meta %}
+    <link rel="pingback" href="/xmlrpc/"/>
+    <link rel="shortcut icon" href="{% static "zinnia/theme/img/favicon.ico" %}"/>
+    <link rel="home" href="{% url 'zinnia:entry_archive_index' %}"/>
+    <link rel="stylesheet" href="{% static "zinnia_twts/bootstrap/css/bootstrap.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "zinnia_twts/theme/css/github.css" %}"/>
+    <link rel="stylesheet" href="{% static "zinnia_twts/ionicon/css/ionicons.min.css" %}"/>
+    <link rel="stylesheet" type="text/css" media="screen, projection"
+          href="{% static "zinnia_twts/theme/css/screen.css" %}"/>
+    <link rel="stylesheet" type="text/css" media="print" href="{% static "zinnia_twts/theme/css/print.css" %}"/>    
+    <link rel="stylesheet" type="text/css" href="{% static "zinnia_twts/theme/css/semantic.css" %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static "zinnia_twts/theme/css/main.css" %}"/>
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" type="text/css" media="screen, projection" href="{% static "zinnia/theme/css/ie.css" %}" />
+    <![endif]-->
+    {% block link %}{% endblock link %}
+    <script src="{% static 'zinnia_twts/theme/js/jquery-2.1.3.min.js' %}"></script>
+    <script src="{% static 'zinnia_twts/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'zinnia_twts/theme/js/pace.min.js' %}"></script>
+    <script src="{% static 'zinnia_twts/theme/js/modernizr.custom.js' %}"></script>
+    {% block script %}{% endblock script %}
+</head>
+<body class="zinnia" {% block single_page %}{% endblock %}>
+        <div class="ui container">
+        <img class="ui vertical image "  src="{% static "zinnia_twts/theme/img/logo.png"%}"  style="width: 40%;" alt=""></div>
+<div class="container">
+    <header id="site-header">
+        <div class="ui inverted blue fitted borderless fluid ten item menu">
+          <a href="http://localhost:8000" class="item">首页</a>
+          <a href="/categories/localinfo/" class="item">本土资讯</a>
+          <a href="/categories/netinfo/" class="item">网络资讯</a>
+          <a href="/categories/charticle/" class="item">中文文献</a>
+          <a href="/categories/engarticle/" class="item">外文文献</a>
+          <a href="/categories/techresult/" class="item">科技成果</a>
+          <a href="/categories/agripro/" class="item">农业专利</a>
+          <a href="/categories/usefultech/" class="item">农业技术</a>
+          <a href="/categories/agridata/" class="item">农业数据</a>
+          <a href="/categories/law/" class="item">政策法规</a>
+        </div>
+        {% block breadcrumbs %}{% endblock breadcrumbs %}
+    </header>
+    {% block content_body %}
+    <div class="content-body">
+        <div class="container">
+            <div class="row">
+                <aside class="col-md-4" role="complementary">
+                    {% block sidebar %}
+                    {% endblock sidebar %}
+                </aside>
+                {% block page_width %}
+                    <main class="col-md-8">
+                    <div class="ui basic segment search-box">
+                        <div class="ui container search-input">
+                          <form method="get" action="{% url 'zinnia:entry_search' %}">
+                            <input class="ui input segment" type="text" name="pattern" placeholder="{% trans "Keywords..." %}" {% if pattern %}value="{{ pattern }}"{% endif %} />
+                            <input class="ui button blue search-button" type="submit" value="搜索">
+                          </form>
+                        </div>
+                    </div>
+                    <div id="content" class="hfeed" role="main">
+                        {% block content %}
+                            <div class="links">
+                                <h2>{% trans "Useful links" %}</h2>
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'zinnia:entry_archive_index' %}"
+                                           title="{% trans "Weblog index" %}">
+                                            {% trans "Weblog index" %}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'zinnia:sitemap' %}" title="{% trans "Sitemap" %}">
+                                            {% trans "Sitemap" %}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        {% endblock content %}
+                    </div>
+                {% endblock %}
+                </main>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+</div>
+
+
+<footer id="site-footer" role="contentinfo">>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p class="copyright">&copy; 2017-2017 Powered by <a href="http://www.djangoproject.com">Django 1.9</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="{% static 'zinnia_twts/theme/js/script.js' %}"></script>
+</body>
+</html>
